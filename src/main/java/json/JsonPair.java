@@ -11,6 +11,6 @@ public class JsonPair extends Tuple<String, Json> {
 
     @Override
     public String toString() {
-        return "'" + this.key.toString() + "': " + this.value.toJson();
+        return "'" + this.key + "': " + this.value.toJson();
     }
 }

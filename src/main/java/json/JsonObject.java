@@ -7,13 +7,11 @@ import java.util.stream.Collectors;
  * Created by Andrii_Rodionov on 1/3/2017.
  */
 public class JsonObject extends Json {
-    private HashMap<String, JsonPair> jsonPairs = new HashMap<>();
+    private final HashMap<String, JsonPair> jsonPairs = new HashMap<>();
 
     public JsonObject(JsonPair... jsonPairs) {
         for (JsonPair jsonPair: jsonPairs) {
-            if (this.jsonPairs.containsKey(jsonPair.key)) {
-                this.jsonPairs.remove(jsonPair.key);
-            }
+            this.jsonPairs.remove(jsonPair.key);
             this.jsonPairs.put(jsonPair.key, jsonPair);
         }
     }
@@ -22,15 +20,13 @@ public class JsonObject extends Json {
     public String toJson() {
         return "{" +
                 jsonPairs.values().stream().map(
-                        (JsonPair x) -> x.toString()
+                        JsonPair::toString
                 ).collect(Collectors.joining(", ")) +
                 "}";
     }
 
     public void add(JsonPair jsonPair) {
-        if (jsonPairs.containsKey(jsonPair.key)) {
-            jsonPairs.remove(jsonPair.key);
-        }
+        jsonPairs.remove(jsonPair.key);
         jsonPairs.put(jsonPair.key, jsonPair);
     }
 

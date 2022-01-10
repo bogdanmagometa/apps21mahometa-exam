@@ -4,7 +4,7 @@ package json;
  * Created by Andrii_Rodionov on 1/4/2017.
  */
 public class JsonBoolean extends Json {
-    private Boolean bool;
+    private final Boolean bool;
 
     public JsonBoolean(Boolean bool) {
         this.bool = bool;
