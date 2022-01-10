@@ -18,11 +18,11 @@ public class JsonObject extends Json {
 
     @Override
     public String toJson() {
-        return "{" +
-                jsonPairs.values().stream().map(
+        return "{"
+                + jsonPairs.values().stream().map(
                         JsonPair::toString
-                ).collect(Collectors.joining(", ")) +
-                "}";
+                ).collect(Collectors.joining(", "))
+                + "}";
     }
 
     public void add(JsonPair jsonPair) {

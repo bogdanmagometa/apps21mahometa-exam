@@ -1,6 +1,6 @@
 package app;
 
-import domain.*;
+import domain.BasicStudent;
 import json.*;
 
 /**
@@ -19,12 +19,12 @@ public class JSONApp {
         JsonPair marks = new JsonPair("marks", jMarks);
         JsonPair year = new JsonPair("year", jYear);
         JsonObject jsonObj = new JsonObject(name, surname, year, marks);
-        print(jsonObj); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
+        print(jsonObj);
 
-        print(jsonObj.projection("surname", "age", "year", "marks")); // {'surname': 'Rodionov', 'year': 2, 'marks': [3, 4]}
+        print(jsonObj.projection("surname", "age", "year", "marks"));
 
         BasicStudent basicStudent = new BasicStudent("Andrii", "Rodionov", 2);
-        print(basicStudent.toJsonObject()); // {'name': 'Andrii', 'surname': 'Rodionov', 'year': 2}
+        print(basicStudent.toJsonObject());
 
     }
 
@@ -37,23 +37,23 @@ public class JSONApp {
         JsonPair surnamePair = new JsonPair("surname", new JsonString("Rodionov"));
         JsonPair yearPair = new JsonPair("year", new JsonNumber(2));
 
-        JsonObject course1 = new JsonObject(
+        JsonObject courseOOP = new JsonObject(
                 new JsonPair("course", new JsonString("OOP")),
                 new JsonPair("mark", new JsonNumber(3)),
                 new JsonPair("passed", new JsonBoolean(true))
         );
-        JsonObject course2 = new JsonObject(
+        JsonObject courseEnglish = new JsonObject(
                 new JsonPair("course", new JsonString("English")),
                 new JsonPair("mark", new JsonNumber(5)),
                 new JsonPair("passed", new JsonBoolean(true))
         );
-        JsonObject course3 = new JsonObject(
+        JsonObject courseMath = new JsonObject(
                 new JsonPair("course", new JsonString("Math")),
                 new JsonPair("mark", new JsonNumber(2)),
                 new JsonPair("passed", new JsonBoolean(false))
         );
 
-        JsonArray exams = new JsonArray(course1, course2, course3);
+        JsonArray exams = new JsonArray(courseOOP, courseEnglish, courseMath);
 
         return new JsonObject(namePair, surnamePair, yearPair,
                 new JsonPair("exams", exams));
