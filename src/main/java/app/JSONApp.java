@@ -34,7 +34,8 @@ public class JSONApp {
 
     public static JsonObject sessionResult() {
         JsonPair namePair = new JsonPair("name", new JsonString("Andrii"));
-        JsonPair surnamePair = new JsonPair("surname", new JsonString("Rodionov"));
+        JsonPair surnamePair = new JsonPair("surname",
+                new JsonString("Rodionov"));
         JsonPair yearPair = new JsonPair("year", new JsonNumber(2));
 
         JsonObject courseOOP = new JsonObject(
